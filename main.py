@@ -3,7 +3,7 @@ import random
 from PyQt5.QtWidgets import *
 
 import database
-
+import menu
 app = QApplication([])
 window = QWidget()
 menu_btn = QPushButton("Меню")
@@ -72,11 +72,31 @@ def ans_func():
     next_quest_btn.show()
     answer_btn.hide()
 
+def next_quest_func():
+    answers[0].show()
+    answers[1].show()
+    answers[2].show()
+    answers[3].show()
+    res_lbl.hide()
+    next_quest_btn.hide()
+    answer_btn.show()
+    database.nomer += 1
+    set_quest()
+
+next_quest_btn.clicked.connect(next_quest_func)
+answer_btn.clicked.connect(ans_func)
+menu_btn.clicked.connect(menu.menu)
+
+
+
+
+
+
+
+
 answer_btn.clicked.connect(ans_func)
 
-window.setLayout(main_line)
-window.show()
-app.exec()
+
 
 
 
